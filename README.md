@@ -30,6 +30,7 @@ You'll need these things to build the project:
  - Meson (`pip install meson`)
  - Clang and LLD (on mac, `brew install llvm`, on linux, `sudo apt install clang lld` or `sudo pacman -S clang lld` or whatever)
  - sqlite3 (this is so common it may already be installed on linux and is definitely already installed on mac. if not, do something like `sudo apt install libsqlite3-dev`)
+ - Either libarchive (from your package manager) or cmake (to build a bundled libarchive)
 
 ## Build for iOS
 
