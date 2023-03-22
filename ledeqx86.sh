@@ -9,7 +9,7 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git' feeds.conf.default
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-sed -i 's/192.168.1.1/192.168.4.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 ./scripts/feeds update -a && ./scripts/feeds install -a && make defconfig
 rm .config
 wget https://raw.githubusercontent.com/szdosar/Actions-OpenWrt/main/.config .config
