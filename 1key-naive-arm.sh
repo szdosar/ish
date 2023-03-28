@@ -1,5 +1,5 @@
 #!/bin/bash
-### go 1.9 for arm64
+### go 1.19 for arm64
 set -e -o pipefail
 curl -Lo go.tar.gz https://go.dev/dl/go1.19.5.linux-arm64.tar.gz
 sudo rm -rf /usr/local/go
