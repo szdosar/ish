@@ -5,4 +5,4 @@ curl -Lo go.tar.gz https://go.dev/dl/go1.20.1.linux-arm64.tar.gz
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go.tar.gz
 rm go.tar.gz
-ln -s /usr/local/go/bin/go /usr/bin/go
+sudo ln -s /usr/local/go/bin/go /usr/bin/go
