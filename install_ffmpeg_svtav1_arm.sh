@@ -10,10 +10,11 @@ chmod +x cmake-3.27.6-linux-aarch64.sh
 sudo ./cmake-3.27.6-linux-aarch64.sh --prefix=/usr/local --skip-license
 
 # 克隆并编译SVT-AV1
-git clone --depth 1 https://github.com/AOMediaCodec/SVT-AV1.git
+git clone https://github.com/AOMediaCodec/SVT-AV1.git
 cd SVT-AV1
-mkdir build && cd build
-cmake ..
+git submodule update --init
+mkdir -p Build/linux && cd Build/linux
+cmake ../../
 make -j$(nproc)
 sudo make install
 
