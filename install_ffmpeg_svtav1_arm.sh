@@ -13,14 +13,16 @@ sudo ./cmake-3.27.6-linux-aarch64.sh --prefix=/usr/local --skip-license
 git clone https://github.com/AOMediaCodec/SVT-AV1.git
 cd SVT-AV1
 git submodule update --init
-mkdir -p Build/linux && cd Build/linux
-cmake ../../
+cd Build
+cmake ..
 make -j$(nproc)
 sudo make install
 
 # 编译ffmpeg
 cd ~
-git clone https://github.com/FFmpeg/FFmpeg.git ffmpeg
+if [ ! -d "ffmpeg" ]; then
+  git clone https://github.com/FFmpeg/FFmpeg.git ffmpeg
+fi
 cd ffmpeg
 ./configure --enable-libsvtav1
 make -j$(nproc)
