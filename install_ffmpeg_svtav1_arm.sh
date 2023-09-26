@@ -42,5 +42,6 @@ cd ffmpeg
 ./configure --enable-libsvtav1
 make -j$(nproc)
 sudo make install
+sudo ldconfig
 
 echo "完成！"
