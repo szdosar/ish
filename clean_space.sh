@@ -32,6 +32,18 @@ sudo rm -rf /var/tmp/*
 sudo snap set system refresh.retain=2
 sudo snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do sudo snap remove "$snapname" --revision="$revision"; done
 
+# 删除不必要的日志文件
+sudo find /var/log -type f -name "*.log" -exec truncate -s 0 {} \;
+
+# 删除不再使用的旧内核
+sudo apt-get remove --purge $(dpkg -l 'linux-image-*' | awk '{ if ($1=="ii") print $2}' | grep -v $(uname -r))
+
+# 清理孤立包
+sudo deborphan | xargs sudo apt-get -y remove --purge
+
+# 查找并删除大文件（按实际情况调整路径）
+find / -type f -size +100M
+
 # 显示清理后的磁盘空间使用情况
 echo "清理后的磁盘空间使用情况："
 df -h
