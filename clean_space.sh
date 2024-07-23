@@ -41,8 +41,9 @@ sudo apt-get remove --purge $(dpkg -l 'linux-image-*' | awk '{ if ($1=="ii") pri
 # 清理孤立包
 sudo deborphan | xargs sudo apt-get -y remove --purge
 
-# 查找并删除大文件（按实际情况调整路径）
-find / -type f -size +100M
+# 查找大文件并列出（手动删除）
+echo "以下是系统中大于100MB的文件，请检查后手动删除："
+sudo find / -type f -size +100M -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
 
 # 显示清理后的磁盘空间使用情况
 echo "清理后的磁盘空间使用情况："
