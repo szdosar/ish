@@ -1,6 +1,6 @@
 #!/bin/bash
 ### tmux
-timedatectl set-timezone Asia/Shanghai
+sudo timedatectl set-timezone Asia/Shanghai
 apt-get -y update
 apt-get -y install tmux
 cd
