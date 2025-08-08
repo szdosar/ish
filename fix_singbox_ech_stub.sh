@@ -51,4 +51,20 @@ main() {
   if [ -z "${files}" ]; then
     echo "ℹ️ 未找到 ech_tag_stub.go，尝试最小化准备源码（先装 host 工具，再 prepare）..."
     # 合并目标，若失败则温和退出，避免影响主流程
-    if ! make tools/install package/feeds/small/sing-box/prepare
+    if ! make tools/install package/feeds/small/sing-box/prepare V=s; then
+      echo "⚠️ host 工具安装或 prepare 失败，跳过补丁（交给原流程处理）。"
+      exit 0
+    fi
+    # 第二次查找
+    files="$(find_files)"
+  fi
+
+  if [ -z "${files}" ]; then
+    echo "🟡 仍未找到 ech_tag_stub.go（可能上游已移除或版本不同），跳过补丁。"
+    exit 0
+  fi
+
+  patch_all "${files}"
+}
+
+main "$@"
