@@ -73,4 +73,14 @@ export XMODIFIERS="@im=fcitx"
 # =======================================
 EOF
 
-# ---------- 使用 fci
+# ---------- 使用 fcitx 作为默认输入法 ----------
+echo "🔧 配置系统使用 fcitx 输入法..."
+im-config -n fcitx
+
+# ---------- 完成提示 ----------
+echo
+echo "✅ 安装完成！"
+echo "🧩 可运行 fcitx-config-gtk 手动添加输入法。"
+echo "🔁 建议注销或重启系统以确保输入法生效。"
+echo "💡 默认快捷键为 Ctrl + Space 可切换输入法。"
+echo
